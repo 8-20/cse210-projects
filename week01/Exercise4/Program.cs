@@ -12,31 +12,44 @@ class Program
         int largest = 0;
         int smallest = 10000;
         int i = 1;
+        Console.WriteLine("Enter a list of numbers. Enter 0 when finished.");
         while (i != 0)
         {
-            Console.WriteLine("Enter a list of numbers. Enter 0 when finished.");
+            Console.Write("Enter a number: ");
             int number = int.Parse(Console.ReadLine());
-            numbers.Add(number);
-            i = number;
-            numbers.Sort();
-            string result = string.Join(", ", numbers);
-            Console.WriteLine(result);
-            count++;
-            sum = sum + i;
-            average = (decimal) sum / count;
-            if (i > largest)
+            if (number != 0)
             {
-                largest = i;
+                numbers.Add(number);
+                i = number;
+                numbers.Sort();
+                string result = string.Join(", ", numbers);
+               // Console.WriteLine(result);
+                count++;
+                sum = sum + i;
+                average = (decimal)sum / count;
+                if (i > largest)
+                {
+                    largest = i;
+                }
+                if (i < smallest && i > 0)
+                {
+                    smallest = i;
+                }
             }
-            if (i < smallest && i > 0)
+            else
             {
-                smallest = i;
-            }
-            Console.WriteLine($"Sum: {sum}");
-            Console.WriteLine($"Count: {count}");
-            Console.WriteLine($"Average: {average:F4}");
-            Console.WriteLine($"Largest: {largest}");
-            Console.WriteLine($"Smallest: {smallest}");
+                Console.WriteLine($"The sum is: {sum}");
+               // Console.WriteLine($"Count: {count}");
+                Console.WriteLine($"The average is: {average:F4}");
+                Console.WriteLine($"THe largest number is: {largest}");
+                Console.WriteLine($"The smallest positive number is: {smallest}");
+                Console.WriteLine($"The sorted list is: ");
+                foreach (int num in numbers)
+                {
+                    Console.WriteLine(num);
+                }
+                i = 0;
+            }       
         }
         
     }
