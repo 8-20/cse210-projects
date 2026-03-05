@@ -13,8 +13,9 @@ class Program
         int favoriteNumber = PromptFavoriteNumber();
 
         int squaredNumber = SquareNumber(favoriteNumber);
- 
+
         DisplayResult(userName, favoriteNumber, squaredNumber);
+        
         static void DisplayMessage()
         {
             Console.WriteLine("Welcome to the Program");
