@@ -6,56 +6,42 @@ class Program
     static void Main(string[] args)
     {
         string letter = "";
-        Console.Write("Please enter the grade you received as a % (For Example: 88%)): ");
-        string gradePerCent = Console.ReadLine();
-
-        if (gradePerCent.Length > 0)
+        Console.Write("Please enter the grade you received: ");
+        string stringGrade = Console.ReadLine();
+         int grade = int.Parse(stringGrade);
         {
-            string grade = gradePerCent.Remove(gradePerCent.Length - 1);
-            Console.WriteLine($"The grade you entered is: {grade}%.");
+            int plusMinus = grade % 10;
 
-            char plusMinus = grade[grade.Length - 1];
-            int numPlusMinus = plusMinus - '0';
-            Console.WriteLine($"The last character of the grade is: {plusMinus}");
-
-           int gradeNumber = int.Parse(grade);
-            Console.WriteLine($"The grade number is: {gradeNumber}");
-
-           if (gradeNumber >= 90)
+            if (grade >= 90)
             {
-                //Console.WriteLine("Your letter grade is: A");
                 letter = "A";
 
             }
-            else if (gradeNumber >= 80)
+            else if (grade >= 80)
             {
-                //Console.WriteLine("Your letter grade is: B");
                 letter = "B";
             }
-            else if (gradeNumber >= 70)
+            else if (grade >= 70)
             {
-                //Console.WriteLine("Your letter grade is: C");
                 letter = "C";
             }
-            else if (gradeNumber >= 60)
+            else if (grade >= 60)
             {
-                //Console.WriteLine("Your letter grade is: D");
                 letter = "D";
             }
             else
             {
-                //Console.WriteLine("Your letter grade is: F");
                 letter = "F";
             }
 
-            if (numPlusMinus >= 7 && letter != "F" && letter != "A")
+            if (plusMinus >= 7 && letter != "F" && letter != "A")
             {
-                Console.WriteLine($"Your letter grade is: {letter}+");
+                Console.WriteLine($"Your grade is: {letter}+");
             }
 
 
 
-            else if (numPlusMinus <= 3)
+            else if (plusMinus <= 3)
             {
                 Console.WriteLine($"Your letter grade is: {letter}-");
             }
@@ -66,7 +52,7 @@ class Program
                 Console.WriteLine($"Your letter grade is: {letter}");
             }
 
-            if (gradeNumber >= 70)
+            if (grade >= 70)
             {
                 Console.WriteLine("Congratulations! You passed the class!");
             }
