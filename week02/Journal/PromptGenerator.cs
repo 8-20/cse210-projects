@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
-    // A static Random instance is efficient and ensures better randomness
-    // when the method is called repeatedly in a short time.
     private static readonly Random Rng = new Random();
     private List<string> _prompts;
 
@@ -27,17 +25,14 @@ public class PromptGenerator
 
         };
     }
-    /// <summary>
-    /// Selects and returns a random item from the list.
-    /// </summary>
-    /// <returns>A randomly selected string.</returns>
+
     public string GetRandomPrompt()
     {
         if (_prompts == null || _prompts.Count == 0)
         {
             return "List is empty.";
         }
-        // Generate a random index between 0 (inclusive) and the list count (exclusive).
+        // Generate a random index between 0 and the list count.
         int index = Rng.Next(0, _prompts.Count);
 
         // Return the item at the randomly generated index.
