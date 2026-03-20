@@ -39,6 +39,10 @@ public class Journal
                     LoadFromFile();
                     break;
                 case 5:
+                    if (_entries != null && _entries.Count > 0)
+                    {
+                        SaveToFile();
+                    }
                     keepRunning = false;
                     break;
                 default:
@@ -117,6 +121,20 @@ public class Journal
 
     private void LoadFromFile()
     {
+        Console.WriteLine($"Your current active journal name is: {_filePath.Substring(9, _filePath.Length - 9 - 4)}");
+        Console.Write("Enter \"y\" to load that file or \"n\" to open another file: ");
+        if (Console.ReadLine().ToLower() == "n")
+        {
+            if (_entries != null && _entries.Count > 0)
+            {
+                SaveToFile();
+                _entries.Clear();
+            }
+            Console.Write("Please enter another file name: ");
+            _filePath = Console.ReadLine();
+            _filePath = "../../../" + _filePath + ".txt";
+        }
+            
         if (File.Exists(_filePath))
         {
             try
